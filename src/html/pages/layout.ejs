@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多頁式網站-六角學院</title>
+  <script src="https://kit.fontawesome.com/291db5f669.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="banner"
+    style='background-image: url(https://raw.githubusercontent.com/hexschool/HTMLHWSource/master/mutiplePage/bg_index.png);'>
+
+    <%- include('../components/Header.ejs', { currentPage: "home" }) %>
+
+      <div class="container">
+        <div class="content">
+          <h2> 歡迎來到 <span>六角學院</span>
+            <br>帶你一起攻略前端設計
+          </h2>
+          <a href="#" class='btn'>
+            馬上去註冊　
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+  </div>
+  <main>
+    <div class="container">
+      <%- //body %>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A officiis repellendus ex quam nesciunt
+          perspiciatis
+          blanditiis natus nobis architecto id neque facilis est quo, magni distinctio hic labore excepturi, quasi quas
+          modi, fugit explicabo? Pariatur eum dolorum accusantium corrupti fuga quisquam quas voluptate deserunt minus,
+          nesciunt amet magnam inventore corporis vero minima sit aperiam labore nulla odit harum fugiat tempore
+          consectetur
+          repudiandae. Ipsa accusamus libero, laboriosam tempora harum a odit quasi expedita iusto, fugiat distinctio
+          dolorum. Nemo, ex sed velit mollitia nostrum laboriosam suscipit voluptatibus aut dolor laudantium, expedita
+          optio
+          dolorem quia reprehenderit cum ipsa nulla eos, similique ad obcaecati?</p>
+    </div>
+  </main>
+
+  <%- include('../components/Footer.ejs') %>
+</body>
+
+</html>
