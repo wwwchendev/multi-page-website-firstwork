@@ -16,6 +16,7 @@
     //要把套件規則加入rules這樣build的時候才會檢查
     //預設選項
     "no-console": "off",
+    "linebreak-style": "off",
     //prettier
     "prettier/prettier": [
       "error",

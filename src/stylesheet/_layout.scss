@@ -7,7 +7,8 @@ body {
 }
 /*********** common ***********/
 .container {
-  width: 960px;
+  width: 100%;
+  max-width: 960px;
   overflow: hidden;
   // border: 2px solid red;
 }
@@ -16,7 +17,7 @@ body {
 header {
   width: 100%;
   z-index: 2;
-  background-color: rgba(82, 78, 78, 0.368);
+  background-color: rgba(82, 78, 78, 0.7);
   height: 75px;
   display: flex;
   justify-content: center;
@@ -90,6 +91,7 @@ header {
 
 /*********** banner ***********/
 .banner {
+  // border: 2px solid red;
   background: #464646;
   height: 600px;
   background-repeat: no-repeat;
@@ -97,23 +99,21 @@ header {
   background-position: 50% 80%;
   width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  // border: 2px solid red;
+  justify-content: center;
   .container {
-    position: relative;
-    // border: 2px solid red;
-    height: 100%;
+    // border: 2px solid rgb(52, 102, 43);
+    width: 100%;
+    margin: 0 auto;
   }
 }
-.banner .content {
-  position: absolute;
-  top: 50%;
-  transform: translate(0%, -50%);
-}
-.banner {
+
+.bannerContent {
+  // border: 2px solid red;
+  padding: 1rem 0.5rem;
+  text-wrap: nowrap;
   h2 {
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: bold;
     color: #00cc99;
     line-height: 1.5;

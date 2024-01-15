@@ -30,8 +30,8 @@ const Config = {
     index: {
       template: './src/html/index.ejs', // 來源HTML文件
       chunks: ['index'], // 注入的JavaScript chunks，這裡使用了 'index'，對應到 entries 中的 'index'
-      filename: 'html/index.html', // 輸出的HTML檔案名稱
-    },
+      filename: 'index.html', // 輸出的HTML檔案名稱
+    }
   },
   //- CSS
   cssFileName: { filename: 'stylesheet/[name].css' },
@@ -39,6 +39,21 @@ const Config = {
 
 module.exports = () => {
   console.log(`當前Webpack建構模式：${Mode}`)
+
+  const generateHtmlPlugins = () => {
+    const htmlPlugins = [];
+
+    for (const [pageName, pageConfig] of Object.entries(Config.pages)) {
+      htmlPlugins.push(new HtmlWebpackPlugin({
+        template: pageConfig.template,
+        chunks: pageConfig.chunks,
+        filename: pageConfig.filename,
+      }));
+    }
+
+    return htmlPlugins;
+  };
+
   return {
     // 配置順序: mode,entry,output,resolve,module,plugin,devServer,devtool
     mode: Mode || 'development',
@@ -80,7 +95,7 @@ module.exports = () => {
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin(Config.pages.index),
+      ...generateHtmlPlugins(),
       Mode === 'production' && new MiniCssExtractPlugin(Config.cssFileName),
       new ESLintPlugin()
     ].filter(Boolean), // 過濾掉空的插件,
@@ -94,8 +109,9 @@ module.exports = () => {
       open: true, //自動在預設瀏覽器中開啟應用程式
       hot: true, //啟用熱模塊
       port: 8080,
+      historyApiFallback: true, //配置 historyApiFallback 来支持哈希路由
       devMiddleware: {
-        index: 'html/index.html', // 指定要打開的預設文件
+        index: 'index.html', // 指定要打開的預設文件
       },
     },
     devtool: Mode === 'production' ? 'inline-source-map' : 'source-map', //啟用映射路徑 (Source Map)
