@@ -54,10 +54,10 @@ function renderComponent(component) {
       render(mainContainer, Layout(Home()));
       break;
     case 'Courses':
-      render(mainContainer, Layout(Courses));
+      render(mainContainer, Layout(Courses()));
       break;
     case 'FAQ':
-      render(mainContainer, Layout(Faq));
+      render(mainContainer, Layout(Faq()));
       break;
     case 'NotFound':
       render(mainContainer, Layout());
@@ -72,7 +72,7 @@ function handleRouteChange() {
   const params = window.location.hash.split('/');
   const currentPath = `/${params[1]}`;
   const route = routes.find((item) => match(item.path)(currentPath));
-  if (currentPath === '') {
+  if (currentPath === '/undefined') {
     renderComponent('Home');
     updateActiveLink('/home');
   } else if (route) {
