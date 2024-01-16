@@ -77,6 +77,8 @@ function handleRouteChange() {
   const route = routes.find((item) => match(item.path)(currentPath));
   if (route) {
     document.title = route.title || 'Default Title';
+  } else if (route === undefined) {
+    document.title = routes.find(() => match('/')).title;
   } else {
     document.title = '404 - Page Not Found';
   }
