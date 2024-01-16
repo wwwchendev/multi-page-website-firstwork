@@ -8,11 +8,15 @@ import NotFound from '../html/pages/NotFound.ejs';
 
 // 定义路由规则
 const routes = [
-  { path: '/', component: 'Home' },
-  { path: '/home', component: 'Home' },
-  { path: '/home/test', component: 'Home' },
-  { path: '/courses', component: 'Courses' },
-  { path: '/faq', component: 'FAQ' },
+  { path: '/', title: '首頁－多頁式網站六角學院', component: 'Home' },
+  { path: '/home', title: '首頁－多頁式網站六角學院', component: 'Home' },
+  {
+    path: '/home/test',
+    title: '首頁測試－多頁式網站六角學院',
+    component: 'Home',
+  },
+  { path: '/courses', title: '課程－多頁式網站六角學院', component: 'Courses' },
+  { path: '/faq', title: '問答－多頁式網站六角學院', component: 'FAQ' },
 ];
 
 // 更新Active連結樣式
@@ -69,10 +73,15 @@ function renderComponent(component) {
 
 // 路由處理
 function handleRouteChange() {
-  const params = window.location.hash.split('/');
-  const currentPath = `/${params[1]}`;
+  const currentPath = window.location.hash.substring(1);
   const route = routes.find((item) => match(item.path)(currentPath));
-  if (currentPath === '/undefined') {
+  if (route) {
+    document.title = route.title || 'Default Title';
+  } else {
+    document.title = '404 - Page Not Found';
+  }
+
+  if (currentPath === '') {
     renderComponent('Home');
     updateActiveLink('/home');
   } else if (route) {

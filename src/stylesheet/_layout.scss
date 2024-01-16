@@ -243,6 +243,20 @@ main .title {
     }
   }
 }
+/*********** NotFound ***********/
+.top-offset {
+  // border: 2px solid red;
+  padding: 200px;
+}
+.NotFound.title {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  h2 {
+    margin-bottom: 20px;
+  }
+}
 
 /*********** home-main ***********/
 main ul.focus {
