@@ -1,10 +1,10 @@
 // router.js
 import { match } from 'path-to-regexp';
 // pages
-import Layout from '../html/pages/Layout';
-import Home from '../html/pages/Home';
-import Courses from '../html/pages/Courses';
-import Faq from '../html/pages/Faq';
+import Home from '../html/pages/Home.ejs';
+import Courses from '../html/pages/Courses.ejs';
+import Faq from '../html/pages/Faq.ejs';
+import NotFound from '../html/pages/NotFound.ejs';
 
 // 定义路由规则
 const routes = [
@@ -51,16 +51,16 @@ function renderComponent(component) {
   // 创建或加载对应组件
   switch (component) {
     case 'Home':
-      render(mainContainer, Layout(Home()));
+      render(mainContainer, Home);
       break;
     case 'Courses':
-      render(mainContainer, Layout(Courses()));
+      render(mainContainer, Courses);
       break;
     case 'FAQ':
-      render(mainContainer, Layout(Faq()));
+      render(mainContainer, Faq);
       break;
     case 'NotFound':
-      render(mainContainer, Layout());
+      render(mainContainer, NotFound);
       break;
     default:
       console.error(`Unknown component: ${component}`);
@@ -85,6 +85,8 @@ function handleRouteChange() {
     // 处理未匹配的路由，例如显示 404 页面
     renderComponent('NotFound');
   }
+  // console.log('params', JSON.stringify(params));
+  // console.log('currentPath', currentPath);
 }
 
 // 导航函数
